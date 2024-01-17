@@ -156,7 +156,7 @@ def run_functions_threads(targets, output_file, thread_count):
     threads = []
 
     if thread_count is None:
-        thread_count=4
+        thread_count=8
 
     for target in targets:
         #创建并启动线程，交替执行函数
