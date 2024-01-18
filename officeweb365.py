@@ -155,9 +155,6 @@ def run_functions_threads(targets, output_file, thread_count):
     # 创建线程
     threads = []
 
-    if thread_count is None:
-        thread_count=8
-
     for target in targets:
         #创建并启动线程，交替执行函数
         thread = threading.Thread(target=execute_function_and_write, args=(wordfix, target, output_file))
@@ -230,6 +227,9 @@ def main():
                 Parsed_tatgets.append(target)
         targets = Parsed_tatgets
 
+    if args.thread is None:
+        args.thread=8
+
     # 禁用 InsecureRequestWarning 警告
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -239,6 +239,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-#8238
+    
