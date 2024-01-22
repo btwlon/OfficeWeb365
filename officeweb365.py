@@ -126,7 +126,9 @@ def ssrf(url):
         else:
             return "none"
     except RequestException as other_err:
-        return "none"
+        output = "[+]可能存在ssrf:" + url1
+        print("\033[93m%s\033[0m" % (output))
+        return output
 
 def upload(url):
     try:
@@ -239,4 +241,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
