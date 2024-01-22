@@ -116,7 +116,7 @@ def pic(url):
 def ssrf(url):
     try:
         url1 = url+"/?furl=http://127.0.0.1/"
-        response = requests.get(url=url1, headers=headers, timeout=3, verify=False)
+        response = requests.get(url=url1, headers=headers, timeout=4, verify=False)
         # 不是200就报错
         response.raise_for_status()
         if "无法获取文件，或者您的文件不是可预览的文件。" in response.text:
@@ -126,10 +126,7 @@ def ssrf(url):
         else:
             return "none"
     except RequestException as other_err:
-        output = "[+]可能存在ssrf:" + url1
-        print("\033[93m%s\033[0m" % (output))
-        return output
-
+        return "none"
 def upload(url):
     try:
         url1 = url+"/PW/SaveDraw?path=../../Content/img&idx=1.ashx"
